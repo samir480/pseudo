@@ -66,7 +66,8 @@ class WordController extends Controller
     function delete(WordModel $word_id)
     {
         $word_id->delete();
-        return response('', Response::HTTP_NO_CONTENT);
+        $res['status'] = 1;
+        return response($res, Response::HTTP_NO_CONTENT);
     }
 
     function update(Request $request, WordModel $word_id)
@@ -88,5 +89,6 @@ class WordController extends Controller
                 $res['status'] = 0;
             }
         }
+        return response($res, 201);
     }
 }

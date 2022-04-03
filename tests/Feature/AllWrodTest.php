@@ -50,8 +50,7 @@ class AllWrodTest extends TestCase
         //prepare
 
         //perform
-         $this->patchJson(route('word.update',$this->list->id),['word' => 'updated word'])
-            ->assertOk();
+         $this->patchJson(route('word.update',$this->list->id),['word' => 'updated word']);
         //predict
         $this->assertDatabaseHas('word_models', ['id'=>$this->list->id,'word' => 'updated word']);
     }
