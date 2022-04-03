@@ -46,8 +46,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="save" onclick="save()">Save changes</button>
-                <button type="button" class="btn btn-primary" id="update" onclick="update()">Save changes</button>
+                <button type="button" class="btn btn-primary" id="save" onclick="save()" >Save changes</button>
+                <button type="button" class="btn btn-primary" id="update" onclick="update()" style="display: none;">update changes</button>
             </div>
         </div>
     </div>
@@ -127,7 +127,7 @@
         } else {
 
             $.ajax({
-                url: "{{ url('api/word-insert') }}/",
+                url: "{{ url('api/word-insert') }}",
                 type: 'post',
                 data: {
                     'word': word
@@ -163,6 +163,8 @@
                 },
                 dataType: "json",
                 success: function(response) {
+                    $("#word").val('');
+                    $("#id").val('');
                     if (response.status == 0) {
                         alert("something went wrong");
                     } else {
